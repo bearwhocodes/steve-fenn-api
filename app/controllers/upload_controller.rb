@@ -9,7 +9,7 @@ class UploadController < ActionController::Base
       path = Rails.root.join("public/uploads/files/", file_name)
  
       File.open(path, "wb") {|f| f.write(params[:file].read)}
-      view_file = Rails.root.join("/download_file/", file_name).to_s
+      view_file = ActionController::Base.asset_host + Rails.root.join("/download_file/", file_name)
       render :json => {:link => view_file}.to_json
  
     else
@@ -27,7 +27,7 @@ class UploadController < ActionController::Base
       path = Rails.root.join("public/uploads/files/", file_name)
  
       File.open(path, "wb") {|f| f.write(params[:file].read)}
-      view_file = Rails.root.join("/download_file/", file_name).to_s
+      view_file = ActionController::Base.asset_host + Rails.root.join("/download_file/", file_name).to_s
       render :json => {:link => view_file}.to_json
  
     else
