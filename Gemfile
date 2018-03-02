@@ -39,6 +39,10 @@ gem 'devise'
 gem 'jquery-rails'
 # WYSIWYG editor
 gem "wysiwyg-rails"
+# Time to read on blogs
+gem "readingtime"
+# Image uploading
+gem "carrierwave"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
