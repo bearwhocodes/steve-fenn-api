@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    redirect_to edit_article_url(@article)
   end
 
   def new
@@ -20,7 +21,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to @article, notice: 'Article was successfully created.'
+      redirect_to edit_article_url(@article), notice: 'Article was successfully created.'
     else
       render :new
     end
@@ -28,7 +29,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to @article, notice: 'Article was successfully updated.'
+      redirect_to edit_article_url(@article), notice: 'Article was successfully updated.'
     else
       render :edit
     end
@@ -40,13 +41,11 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.fetch(:article, {})
+      params.require(:article).permit(:title, :summary, :published_at, :image, :content)
     end
 end

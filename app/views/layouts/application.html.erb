@@ -1,16 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <title>SteveFennApi</title>
-    <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>API</title>
+    <meta name="description" content="API for stevefenn.co.uk">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if alert %>
+      <div class="alert alert-warning" role="alert">
+        <%= alert %>
+      </div>
+    <% elsif notice %>
+      <div class="alert alert-primary" role="alert">
+        <%= notice %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
+

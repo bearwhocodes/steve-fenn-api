@@ -13,6 +13,8 @@
 //= require rails-ujs
 //= require jquery
 //= require turbolinks
+//= require popper
+//= require bootstrap
 //
 // Froala
 //= require froala_editor.min.js

@@ -43,6 +43,8 @@ gem "wysiwyg-rails"
 gem "readingtime"
 # Image uploading
 gem "carrierwave"
+# Bootstrap
+gem "bootstrap"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
