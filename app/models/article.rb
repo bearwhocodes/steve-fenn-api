@@ -17,7 +17,7 @@ class Article < ApplicationRecord
 
   # Scopes
   scope :unarchived, -> { where(archived: false) }
-  scope :published, -> { where("published_at > ?", Time.now)}
+  scope :published, -> { where("published_at <= ?", Time.now)}
 
   # Methods
   def to_s
