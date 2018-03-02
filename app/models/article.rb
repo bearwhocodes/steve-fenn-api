@@ -1,5 +1,8 @@
 class Article < ApplicationRecord
 
+  # Relationships
+  has_and_belongs_to_many :related_articles, class_name: 'Article', join_table: 'related_articles', foreign_key: 'article_id', association_foreign_key: 'related_id'
+
   # Acts as
   acts_as_taggable
 
@@ -11,6 +14,15 @@ class Article < ApplicationRecord
 
   # Validations
   validates :title, :summary, :reading_time, :content, :published_at, presence: true
+
+  # Scopes
+  scope :unarchived, -> { where(archived: false) }
+  scope :published, -> { where("published_at > ?", Time.now)}
+
+  # Methods
+  def to_s
+    title
+  end
 
 private
 

@@ -5,6 +5,7 @@
       <tr>
         <th>Title</th>
         <th>Published</th>
+        <th>Archived?</th>
         <th width="10%"></th>
         <th width="10%"></th>
       </tr>
@@ -15,6 +16,7 @@
         <tr>
           <td><%= link_to article.title, edit_article_path(article) %></td>
           <td><%= article.published_at.strftime("%d / %m / %Y") %></td>
+          <td><%= archived_icon(article) %></td>
           <td><%= link_to 'Edit', edit_article_path(article), class: 'btn btn-small btn-success float-right' %></td>
           <td><%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small btn-danger float-right' %></td>
         </tr>

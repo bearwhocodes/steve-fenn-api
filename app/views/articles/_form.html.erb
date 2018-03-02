@@ -34,13 +34,27 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :tag_list, "Tags" %>
+    <%= form.label :tag_list, 'Tags' %>
     <%= form.text_field :tag_list, class: 'form-control', value: article.tag_list.join(", ") %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :related_article_ids, 'Related Articles' %>
+    <%= form.collection_check_boxes(:related_article_ids, Article.unarchived.reject { |a| a.id == article.id }, :id, :to_s) do |b| %>
+      <div class="form-check">
+        <%= b.check_box(class: 'form-check-input') %> <%= b.label(class: 'form-check-label') %>
+      </div>
+    <% end %>
   </div>
 
   <div class="form-group">
     <%= form.label :content %>
     <%= form.text_area :content, class: 'editor' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :archived, 'Archived?' %>
+    <%= form.check_box :archived, class: 'form-control' %>
   </div>
 
   <div class="mt-3">
