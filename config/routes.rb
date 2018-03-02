@@ -9,6 +9,14 @@ Rails.application.routes.draw do
 
   # Controllers
   resources :articles
+  namespace :endpoints do
+    resources :articles, only: [:index, :show]
+    resources :tags, only: [] do
+      member do
+        get :articles
+      end
+    end
+  end
   
   # Root
   root to: "articles#index"
