@@ -39,12 +39,14 @@ gem 'devise'
 gem 'jquery-rails'
 # WYSIWYG editor
 gem "wysiwyg-rails"
-# Time to read on blogs
+# Time to read on articles
 gem "readingtime"
 # Image uploading
 gem "carrierwave"
 # Bootstrap
 gem "bootstrap"
+# Tags on articles
+gem "acts-as-taggable-on"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

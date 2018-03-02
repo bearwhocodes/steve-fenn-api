@@ -1,5 +1,8 @@
 class Article < ApplicationRecord
 
+  # Acts as
+  acts_as_taggable
+
   # Callbacks
   before_validation :set_reading_time
 
