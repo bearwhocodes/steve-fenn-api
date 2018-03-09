@@ -1,7 +1,8 @@
 class Endpoints::ArticlesController < ApplicationController
 
   def index
-    @articles = Article.unarchived.published.all
+    @page = params[:page].present? ? params[:page] : 1
+    @articles = Article.unarchived.published.paginate(page: @page)
   end
 
   def show
